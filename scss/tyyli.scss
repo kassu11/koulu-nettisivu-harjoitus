@@ -83,9 +83,8 @@ nav {
   position: relative;
   display: grid;
   top: 50px;
-  width: 100%;
   place-items: center;
-  width: min(100%, calc(100% - 100px));
+  width: calc(100% - 100px);
   place-self: center;
   margin-top: 100px;
 
@@ -100,12 +99,17 @@ nav {
 }
 
 .cardContainer {
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
   text-align: left;
-
+  flex-wrap: wrap;
+  
   .card {
-    width: min(100%, 200px);
+    flex-grow: 1;
+    width: 120px;
+    max-width: 200px;
     background-color: #b0278d8f;
     margin: 10px;
     display: flex;
@@ -114,6 +118,10 @@ nav {
     padding: 10px;
     box-sizing: border-box;
     box-shadow: 4px 4px #00000078;
+
+    h2 {
+      white-space: nowrap;
+    }
 
     .cardImage {
       width: 100%;
@@ -134,10 +142,40 @@ nav {
 }
 
 .infoContainer {
+  justify-content: center;
+  position: relative;
+  text-align: left;
+  flex-wrap: wrap;
+  max-width: 100%;
   display: flex;
+  padding: 5px;
+  width: 100%;
   gap: 50px;
+
   address p {
-    text-align: left;
     margin: 0px;
+  }
+
+  h1 {
+    margin-top: 0px;
+  }
+
+  img, .left {
+    position: relative;
+    width: 150px;
+    max-width: 300px;
+    flex-grow: 1;
+  }
+  
+  img {
+    height: max-content;
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .bodyContainer {
+    width: calc(100% - 10px);
+    margin-top: 0px;
   }
 }
