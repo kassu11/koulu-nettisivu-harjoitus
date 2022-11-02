@@ -1,19 +1,3 @@
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../fonts/Inter-400.woff2") format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("../fonts/Inter-800.woff2") format('woff2');
-}
-
 h1 {
   font-size: 3rem;
   text-shadow: 0px 0px 3px #ffffff, 4px 4px black;
@@ -45,6 +29,7 @@ header {
   top: 0px;
   z-index: 1;
   background-color: #141414;
+  color: #fff;
 
   nav {
     position: relative;
@@ -63,9 +48,7 @@ header {
       position: relative;
       height: 100%;
   
-      .logo {
-        height: 100%;
-      }
+      .logo {height: 100%}
     }
   
     .sections {
@@ -75,18 +58,20 @@ header {
       gap: 10px;
   
       .sectionLink {
+        all: unset;
+        cursor: pointer;
         padding: 10px;
-        // background-color: #3f51b5;
-        color: #fff;
-        text-decoration: none;
         border-radius: 5px;
-        font-family: helvetica;
-        font-weight: 600;
-        font-size: 1.2rem;
         transition: .2s all;
   
         &:hover {
           background-color: #004fff;
+        }
+
+        span {
+          color: #fff;
+          font-weight: 600;
+          font-size: 1.2rem;
         }
       }
     }
@@ -107,6 +92,7 @@ header {
 
   section {
     position: relative;
+    background-color: black;
     padding: 50px;
     margin-bottom: min(calc(50vw + 180px), 680px);
     display: grid;
@@ -160,16 +146,23 @@ header {
         background-size: 100% 100%;
         padding-inline: 5px;
         margin-inline: -5px;
-        color: white;
+        --color: white;
+      }
+
+      span {
+        color: var(--color);
+        transition: color .2s;
       }
     }
   }
 }
 
-#home {background: linear-gradient(180deg, #FF9900 0%, #FF0002 85.62%)}
+#home {
+  background-image: linear-gradient(180deg, #FF9900 0%, #FF0002 85.62%)
+}
 
 #products {
-  background: linear-gradient(180deg, #A812A4 2.72%, #3D006D 108.56%);
+  background-image: linear-gradient(180deg, #A812A4 2.72%, #3D006D 108.56%);
 
   .cardContainer {
     position: relative;
@@ -210,7 +203,7 @@ header {
 }
 
 #contact {
-  background: linear-gradient(180deg, #0094C7 0%, #00FF57 100%);
+  background-image: linear-gradient(180deg, #0094C7 0%, #00FF57 100%);
 
   .infoContainer {
     justify-content: center;
@@ -223,14 +216,9 @@ header {
     width: 100%;
     gap: 50px;
   
-    address p {
-      margin: 0px;
-    }
-  
-    h1 {
-      margin-top: 0px;
-    }
-  
+    h1 {margin-top: 0px}
+    address p {margin: 0px}
+   
     .left {
       position: relative;
       width: min-content;
@@ -246,6 +234,7 @@ header {
       flex-grow: 1;
       height: max-content;
       align-self: center;
+      border: none;
     }
   }
 }
@@ -256,19 +245,15 @@ header {
   }
 }
 @media screen and (max-width: 370px) {
-  .container section {
-    padding: 10px;
-  }
-
-  h1 {
-    margin-top: 5px;
-  }
+  .container section {padding: 10px}
+  h1 {margin-top: 5px}
 
   header nav .sections {
     gap: 0px;
     justify-content: space-between;
     margin-left: 15px;
     width: 100%;
+    margin-right: 8px;
 
     .sectionLink {
       padding: 2px;
