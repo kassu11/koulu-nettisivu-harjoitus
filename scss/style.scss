@@ -37,6 +37,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }
 
 header {
@@ -60,6 +61,7 @@ header {
   
     .logoContainer {
       position: relative;
+      height: 100%;
   
       .logo {
         height: 100%;
