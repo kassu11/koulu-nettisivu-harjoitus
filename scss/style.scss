@@ -14,8 +14,16 @@
   src: url("../fonts/Inter-800.woff2") format('woff2');
 }
 
-h1 {font-size: 3rem}
-h2 {font-size: 2rem}
+h1 {
+  font-size: 3rem;
+  text-shadow: 0px 0px 3px #ffffff, 4px 4px black;
+  line-height: 0.8;
+  &::before {
+    content: "# ";
+    white-space: nowrap;
+  }
+}
+h2 {font-size: 1.5rem}
 h3 {font-size: 1rem}
 h4 {font-size: .5rem}
 p {max-width: 75ch}
@@ -27,10 +35,15 @@ body {
   margin: 0px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   position: sticky;
   top: 0px;
   z-index: 1;
+  background-color: #141414;
 
   nav {
     position: relative;
@@ -38,8 +51,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
     height: 50px;
-    background-color: #141414;
     box-sizing: border-box;
     padding: 5px;
     z-index: 1;
@@ -52,28 +66,24 @@ header {
       }
     }
   
-    .buttons {
+    .sections {
       margin-left: auto;
       display: flex;
       place-items: center;
       gap: 10px;
   
-      .button {
+      .sectionLink {
         padding: 10px;
-        background-color: #3f51b5;
+        // background-color: #3f51b5;
         color: #fff;
         text-decoration: none;
         border-radius: 5px;
         font-family: helvetica;
         font-weight: 600;
-        font-size: 15px;
+        font-size: 1.2rem;
         transition: .2s all;
   
         &:hover {
-          background-color: #004fff;
-        }
-  
-        &.active {
           background-color: #004fff;
         }
       }
@@ -100,9 +110,9 @@ header {
     display: grid;
     place-items: center;
     place-self: center;
-    &:last-of-type {
-      margin-bottom: calc(30vw + 40px);
-    }
+    &:last-of-type {margin-bottom: min(calc(30vw + 40px), 400px)}
+
+    > p {text-align: center}
 
     img.responsive {
       position: relative;
@@ -129,6 +139,28 @@ header {
         filter: drop-shadow(0px -12px 27px black);
       }
     }
+
+    a {
+      --color: #fb00ff;
+      all: unset;
+      text-shadow: 0px 0px 2px #00000052;
+      background-image: linear-gradient(to left top, var(--color), var(--color));
+      background-size: 100% 2px;
+      background-repeat: no-repeat;
+      background-position-y: bottom;
+      font-weight: 600;
+      transition: .2s all;
+      color: var(--color);
+      cursor: pointer;
+      
+      &:hover {
+        background-image: linear-gradient(to left top, red, blue);
+        background-size: 100% 100%;
+        padding-inline: 5px;
+        margin-inline: -5px;
+        color: white;
+      }
+    }
   }
 }
 
@@ -150,19 +182,21 @@ header {
       width: 50px;
       max-width: 250px;
       min-width: min-content;
-      background-color: #b0278d8f;
+      background-color: #ffffff26;
       margin: 10px;
       display: flex;
       flex-direction: column;
       gap: 10px;
       padding: 10px;
       box-sizing: border-box;
-      box-shadow: 4px 4px #00000078;
+      box-shadow: 4px 4px #00000069;
   
       h2, h3 {
         white-space: nowrap;
         margin: 0px;
       }
+      h2 {text-shadow: 3px 3px black} 
+      p {margin: 0px}
   
       .cardImage {
         width: 100%;
@@ -195,16 +229,55 @@ header {
       margin-top: 0px;
     }
   
-    img, .left {
+    .left {
       position: relative;
-      width: 150px;
+      width: min-content;
       max-width: 300px;
       flex-grow: 1;
     }
     
-    img {
+    iframe {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      width: min(300px, 100%);
+      max-width: 450px;
+      flex-grow: 1;
       height: max-content;
       align-self: center;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container section {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .container section {
+    padding: 10px;
+  }
+
+  h1 {
+    margin-top: 5px;
+  }
+
+  header nav .sections {
+    gap: 0px;
+    justify-content: space-between;
+    margin-left: 15px;
+    width: 100%;
+
+    .sectionLink {
+      padding: 2px;
+      margin: 0px;
+      font-size: 5vw;
+
+      &:hover {
+        padding: 12px;
+        margin: -10px;
+        z-index: 1;
+      }
     }
   }
 }
